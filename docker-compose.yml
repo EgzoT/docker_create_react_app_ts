@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  create_react_app_ts:
+    image: create_react_app_ts
+    restart: on-failure
+    volumes:
+      - ./build/:/project/build
+      - ./public/:/project/public
+      - ./src/:/project/src
+      - .:/project_data
+    expose:
+      - "3000"
+    ports:
+      - "3000:3000"
