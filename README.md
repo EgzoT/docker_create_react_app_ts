@@ -2,19 +2,7 @@
 
 Create or continue create react app typescript project in docker container
 
-## Build image
-
-```sh
-sudo docker build -t create_react_app_ts .
-```
-
-## Check container
-
-```sh
-sudo docker exec -it create_react_app_ts bash
-```
-
-## Run compose
+## Start compose
 
 ```sh
 sudo docker-compose up
@@ -24,6 +12,20 @@ sudo docker-compose up
 
 ```sh
 sudo docker-compose down
+```
+
+## Install new npm package
+
+```sh
+sudo docker exec -it docker_create_react_app_ts_create_react_app_ts_1 bash
+npm i <package_name>
+```
+
+## Uninstall npm package
+
+```sh
+sudo docker exec -it docker_create_react_app_ts_create_react_app_ts_1 bash
+npm uninstall <package_name>
 ```
 
 ## Restart compose
@@ -36,4 +38,10 @@ sudo docker compose restart
 
 ```sh
 sudo docker-compose images
+```
+
+## Remove compose images
+
+```sh
+sudo docker image rm docker_create_react_app_ts_create_react_app_ts
 ```

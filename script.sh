@@ -1,37 +1,22 @@
 #!/bin/bash
 
-if [[ -f ./project_data/package.json ]]; then
-    cp project_data/package.json project/package.json
-    cp project_data/package-lock.json project/package-lock.json
-    cp project_data/tsconfig.json project/tsconfig.json
-
+if [[ -f ./project/package.json ]]; then
     cd project
-
     npm install
     npm start
 else
     npx -y create-react-app my-app --template typescript
 
-    cd my-app
-
-    mkdir ../project/public/
-    cp -r public/. ../project/public/
-    mkdir ../project/src/
-    cp -r src/. ../project/src/
-
-    cp package.json ../project/package.json
-    cp package.json ../project_data/package.json
-    cp package-lock.json ../project/package-lock.json
-    cp package-lock.json ../project_data/package-lock.json
-    cp tsconfig.json ../project/tsconfig.json
-    cp tsconfig.json ../project_data/tsconfig.json
-    cp ./.gitignore ../project/.gitignore
-    cp ./.gitignore ../project_data/.gitignore
-
-    cd ..
+    cp -r my-app/. project/.
     rm -r my-app
 
     cd project
+    chown -R node:node /project/node_modules
+    chown -R node:node /project/public
+    chown -R node:node /project/src
+    chown -R node:node /project/package.json
+    chown -R node:node /project/package-lock.json
+    chown -R node:node /project/tsconfig.json
     npm install
     npm start
 fi
