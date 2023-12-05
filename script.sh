@@ -5,7 +5,7 @@ if [[ -f ./project/package.json ]]; then
     npm install
     npm start
 else
-    npx -y create-react-app my-app --template typescript
+    npx -y create-react-app my-app --template cra-template-pwa-typescript
 
     cp -r my-app/. project/.
     rm -r my-app
